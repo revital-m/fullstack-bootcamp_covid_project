@@ -1,5 +1,5 @@
 import { select } from "./country.js";
-import { conteintMap, conteintObj, flagLoad } from "./covid.js";
+import { conteintMap, conteintObj, flagLoad } from "./app.js";
 import { buildBarChart, myChart } from "./graph.js";
 
 const dataContainerBtn = document.querySelector(".data_container-continent");
