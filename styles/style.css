@@ -1,0 +1,69 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.data_container {
+  margin: 3rem;
+}
+
+.data_container_canvas {
+  margin: 4rem;
+  width: 50vw;
+  display: block;
+  box-sizing: border-box;
+}
+
+.data_container_canvas_country {
+  margin: 4rem;
+  width: 30vw;
+  display: block;
+  box-sizing: border-box;
+}
+
+.displayNone {
+  display: none;
+}
+
+.visibilityHidden {
+  visibility: hidden;
+}
+
+.country_container {
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  top: 12rem;
+  right: 23rem;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: circle-clear;
+  border-left: rgb(1, 245, 253) 0.4rem solid;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+}
+
+@keyframes circle-clear {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.displayText {
+  display: none;
+}
