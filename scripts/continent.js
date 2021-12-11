@@ -1,25 +1,45 @@
 import { countryContainer, select } from "./country.js";
-import { continentMap, continentObj, flagLoad } from "./app.js";
-import { buildBarChart, myChart } from "./graph.js";
+import {
+  btnContainerChart,
+  chosenObj,
+  continentMap,
+  continentObj,
+  flagLoad,
+  preparingForChart,
+} from "./app.js";
+import { buildChart, myChart } from "./graph.js";
+// import { buildBarChart, myChart } from "./graph.js";
 
 const dataContainerBtn = document.querySelector(".btnContainer__continent");
 const dataContainerSelect = document.querySelector(".dataContainer__select");
+export const infoContainerTotal = document.querySelector(
+  ".infoContainer__total"
+);
+
+// export const chartData = {
+//   asia: {labelsArr: [], deathsDataArr: [], confirmedDataArr: [], criticalDataArr: [], recoveredDataArr: [],},
+//   africa: {labelsArr: [], deathsDataArr: [], confirmedDataArr: [], criticalDataArr: [], recoveredDataArr: [],},
+//   americas: {labelsArr: [], deathsDataArr: [], confirmedDataArr: [], criticalDataArr: [], recoveredDataArr: [],},
+//   europe: {labelsArr: [], deathsDataArr: [], confirmedDataArr: [], criticalDataArr: [], recoveredDataArr: [],},
+//   australia: {labelsArr: [], deathsDataArr: [], confirmedDataArr: [], criticalDataArr: [], recoveredDataArr: [],},
+// }
 
 dataContainerBtn.addEventListener("click", (e) => {
   if (flagLoad && e.target.innerText.length <= 10) {
-    getContinentData(e.target.innerText);
+    chosenObj.chosenBtn = `${e.target.innerText}`;
+    console.log(chosenObj.chosenBtn);
+    // getContinentData(e.target.innerText);
+    myChart.destroy();
+    preparingForChart();
     displayNone(e.target.innerText.toLowerCase());
     select.classList.remove("visibilityHidden");
+    countryContainer.classList.add("displayNone");
+    btnContainerChart.classList.add("displayNone");
+    infoContainerTotal.classList.add("displayNone");
+    countryContainer.classList.remove("displayNone");
     countryContainer.classList.add("visibilityHidden");
   }
 });
-
-// get continent data for the chart
-export function getContinentData(continentName) {
-  let name = continentName.toLowerCase();
-  myChart.destroy();
-  buildBarChart(continentObj[`${name}`], `${continentName}`);
-}
 
 // display only the countries in the selected continent in drop down list.
 function displayNone(continent) {
@@ -32,7 +52,9 @@ function displayNone(continent) {
   selectCountry.selected = true;
   selectCountry.classList.remove("displayNone");
 
-  const countryArr = document.querySelectorAll(`[data-continent="${continent}"]`);
+  const countryArr = document.querySelectorAll(
+    `[data-continent="${continent}"]`
+  );
   for (let i = 0; i < countryArr.length; i++) {
     countryArr[i].classList.remove("displayNone");
   }

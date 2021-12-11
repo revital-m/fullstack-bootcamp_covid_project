@@ -2,27 +2,26 @@ import { circleContinent } from "./app.js";
 import { circleCountry } from "./country.js";
 
 const canvasChart = document.querySelector(".dataContainer__chart");
-const canvasChartCountry = document.querySelector(
-  ".countryContainer__chart"
-);
+const dataContainerCanvas = document.querySelector(".dataContainer__canvas");
+const canvasChartCountry = document.querySelector(".countryContainer__chart");
 
 export let myChart = "";
 export let myChart2 = "";
 
 // creating the contient chart.
-export function buildBarChart(dataArray, nameOfContient) {
+export function buildChart(
+  dataArray,
+  nameOfContient,
+  labelsArray,
+  typeOfChart
+) {
   myChart = new Chart(canvasChart, {
-    type: "bar",
+    type: `${typeOfChart}`,
     data: {
-      labels: [
-        "Deaths",
-        "Confirmed Cases",
-        "Critical Cases",
-        "Recovered Cases",
-      ],
+      labels: labelsArray,
       datasets: [
         {
-          label: `${nameOfContient}`,
+          // label: nameOfContient,
           data: dataArray,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
@@ -45,10 +44,9 @@ export function buildBarChart(dataArray, nameOfContient) {
       ],
     },
     options: {
-      title: {
-        display: "true",
-        text: "Custom Chart Title",
-        fontColor: "#333",
+      legend: {
+        display: false,
+        position: "right",
       },
       scales: {
         y: {
@@ -58,12 +56,17 @@ export function buildBarChart(dataArray, nameOfContient) {
     },
   });
   circleContinent.classList.add("displayNone");
+  if (typeOfChart === "bar") {
+    dataContainerCanvas.classList.add("dataContainer__canvas--width");
+  } else {
+    dataContainerCanvas.classList.remove("dataContainer__canvas--width");
+  }
 }
 
 // creating the country chart.
 export function buildDoughnutChart(dataArray) {
   myChart2 = new Chart(canvasChartCountry, {
-    type: "doughnut",
+    type: "pie",
     data: {
       labels: [
         "Deaths",
