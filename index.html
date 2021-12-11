@@ -16,32 +16,34 @@
   <body>
     <h1 class="displayText">Please turn your phone to the side.</h1>
     <div class="container">
-      <div class="data_container">
-        <div class="data_container-continent">
-          <button class="Asia-button">Asia</button>
-          <button>Africa</button>
-          <button>Americas</button>
-          <button>Europe</button>
-          <button>Australia</button>
+      <div class="dataContainer">
+        <div class="btnContainer">
+          <button data-id="worldBtn" class="btn worldBtn">World</button>
+          <div class="btnContainer__continent">
+            <button class="btn">Asia</button>
+            <button class="btn">Africa</button>
+            <button class="btn">Americas</button>
+            <button class="btn">Europe</button>
+            <button class="btn">Australia</button>
+          </div>
+          <select
+            class="btn dataContainer__select visibilityHidden"
+            placeholder="country"
+          >
+            <option data-id="select country" value="" disabled selected>
+              select country
+            </option>
+          </select>
         </div>
-        <div><button class="world-btn">World</button></div>
-        <div class="data_container_canvas">
-          <canvas class="data_container_chart"></canvas>
+        <div data-id="continent" class="countryContainer--circle displayNone"></div>
+        <div class="dataContainer__canvas">
+          <canvas class="dataContainer__chart"></canvas>
         </div>
-
-        <select
-          class="data_container-select visibilityHidden"
-          placeholder="country"
-        >
-          <option data-id="select country" value="" disabled selected>
-            select country
-          </option>
-        </select>
       </div>
-      <div class="country_container visibilityHidden">
-        <div class="circle displayNone"></div>
-        <div class="data_container_canvas_country">
-          <canvas class="data_container_chart_country"></canvas>
+      <div class="countryContainer visibilityHidden">
+        <div data-id="country" class="countryContainer--circle displayNone"></div>
+        <div class="countryContainer__canvas">
+          <canvas class="countryContainer__chart"></canvas>
         </div>
       </div>
     </div>

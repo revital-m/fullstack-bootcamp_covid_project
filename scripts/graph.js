@@ -1,8 +1,9 @@
-import { circle } from "./country.js";
+import { circleContinent } from "./app.js";
+import { circleCountry } from "./country.js";
 
-const canvasChart = document.querySelector(".data_container_chart");
+const canvasChart = document.querySelector(".dataContainer__chart");
 const canvasChartCountry = document.querySelector(
-  ".data_container_chart_country"
+  ".countryContainer__chart"
 );
 
 export let myChart = "";
@@ -56,6 +57,7 @@ export function buildBarChart(dataArray, nameOfContient) {
       },
     },
   });
+  circleContinent.classList.add("displayNone");
 }
 
 // creating the country chart.
@@ -106,5 +108,5 @@ export function buildDoughnutChart(dataArray) {
       },
     },
   });
-  circle.classList.add("displayNone");
+  circleCountry.classList.add("displayNone");
 }

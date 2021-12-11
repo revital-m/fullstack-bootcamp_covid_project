@@ -2,6 +2,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -10,18 +11,55 @@ body {
   align-items: center;
 }
 
-.data_container {
+.dataContainer {
   margin: 3rem;
 }
 
-.data_container_canvas {
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.5rem;
+  width: 8rem;
+  font-size: 1.5rem;
+  margin: 1rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 5px gray;
+  border-radius: 1rem;
+  background: rgba(199, 239, 255, 0.699);
+}
+
+.btn:hover {
+  background: rgba(226, 246, 253, 0.699);
+}
+
+.dataContainer__select {
+  width: max-content;
+  text-align: center;
+}
+
+.worldBtn {
+  font-weight: bold;
+  background: rgba(226, 246, 253, 0.699);
+}
+
+.worldBtn:hover {
+  background: rgba(199, 239, 255, 0.699);
+}
+
+.dataContainer__canvas {
   margin: 4rem;
   width: 50vw;
   display: block;
   box-sizing: border-box;
 }
 
-.data_container_canvas_country {
+.countryContainer__canvas {
   margin: 4rem;
   width: 30vw;
   display: block;
@@ -36,11 +74,11 @@ body {
   visibility: hidden;
 }
 
-.country_container {
+.countryContainer {
   position: relative;
 }
 
-.circle {
+.countryContainer--circle {
   position: absolute;
   top: 12rem;
   right: 23rem;

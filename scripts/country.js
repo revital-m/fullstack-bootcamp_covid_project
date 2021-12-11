@@ -1,13 +1,13 @@
 import { myChart2, buildDoughnutChart } from "./graph.js";
 
 export const select = document.querySelector("select");
-export const circle = document.querySelector(".circle");
-export const countryContainer = document.querySelector(".country_container");
+export const circleCountry = document.querySelector('[data-id="country"]');
+export const countryContainer = document.querySelector(".countryContainer");
 
 // select a spicific country
 select.addEventListener("click", (e) => {
   getCountryAPI(e.target.value);
-  circle.classList.remove("displayNone");
+  circleCountry.classList.remove("displayNone");
   countryContainer.classList.remove("visibilityHidden");
   myChart2.destroy();
 });
