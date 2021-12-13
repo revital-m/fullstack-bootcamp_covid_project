@@ -34,7 +34,7 @@
             <button class="btn">Australia</button>
           </div>
           <select
-            class="btn dataContainer__select visibilityHidden"
+            class="btn dataContainer__select displayNone"
             placeholder="country"
           >
             <option data-id="select country" value="" disabled selected>
@@ -46,49 +46,44 @@
           data-id="continent"
           class="countryContainer--circle displayNone"
         ></div>
-        <div class="infoContainer">
+        <div class="infoContainer infoContainer--country">
           <ul class="infoContainer__total">
             <li class="total">
               <i class="total--deaths fas fa-biohazard fa-3x"></i>
-              <p>
-                Total Deaths: <span data-id="Deaths" class="total--num"></span>
-              </p>
+              <div class="total__info">
+                <p>Total Deaths:</p>
+                <p data-id="Deaths" class="total--num"></p>
+              </div>
             </li>
             <li class="total">
               <i class="total--confirmed fas fa-virus fa-3x"></i>
-              <p>
-                Total Confirmed Cases:
-                <span data-id="Confirmed" class="total--num"></span>
-              </p>
+              <div class="total__info">
+                <p>Total Confirmed Cases:</p>
+                <p data-id="Confirmed" class="total--num"></p>
+              </div>
             </li>
             <li class="total">
               <i class="total--critical fas fa-hospital-symbol fa-3x"></i>
-              <p>
-                Total Critical Cases:
-                <span data-id="Critical" class="total--num"></span>
-              </p>
+              <div class="total__info">
+                <p>Total Critical Cases:</p>
+                <p data-id="Critical" class="total--num"></p>
+              </div>
             </li>
             <li class="total">
               <i class="total--recovered far fa-smile-beam fa-3x"></i>
-              <p>
-                Total Recovered Cases:
-                <span data-id="Recovered" class="total--num"></span>
-              </p>
+              <div class="total__info">
+                <p>Total Recovered Cases:</p>
+                <p data-id="Recovered" class="total--num"></p>
+              </div>
             </li>
           </ul>
           <div class="dataContainer__canvas">
             <h1 class="dataContainer__canvas--title"></h1>
-            <canvas class="dataContainer__chart"></canvas>
-          </div>
-          <div class="countryContainer displayNone">
             <div
               data-id="country"
               class="countryContainer--circle displayNone"
             ></div>
-            <div class="countryContainer__canvas">
-              <h1 class="countryContainer__canvas--title"></h1>
-              <canvas class="countryContainer__chart"></canvas>
-            </div>
+            <canvas class="dataContainer__chart"></canvas>
           </div>
         </div>
         <div class="btnContainer__chart">

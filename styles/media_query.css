@@ -5,6 +5,36 @@
   .container {
     flex-direction: column;
   }
+
+  .infoContainer {
+    flex-direction: column;
+  }
+
+  .dataContainer__canvas {
+    margin: 2rem;
+    width: 40vw;
+  }
+
+  .dataContainer__canvas--width {
+    width: 50vw;
+  }
+
+  .countryContainer__canvas {
+    margin: 3rem;
+    width: 40vw;
+  }
+
+  .infoContainer__total {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .total {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    width: 20rem;
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 500px) {

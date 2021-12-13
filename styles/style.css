@@ -24,6 +24,10 @@ body {
   flex-wrap: wrap;
 }
 
+.infoContainer--country {
+  flex-direction: row-reverse;
+}
+
 .btn {
   padding: 0.5rem;
   width: 8rem;
@@ -79,12 +83,16 @@ body {
   box-shadow: 1px 1px 5px gray;
   border-radius: 1rem;
   background: rgba(211, 211, 211, 0.699);
-  text-align: center;
+}
+
+.total__info {
+  display: flex;
+  flex-direction: column;
 }
 
 .total--num {
   font-weight: 100;
-  display: block;
+  padding: 0 3rem;
 }
 
 .dataContainer__select {
@@ -99,6 +107,13 @@ body {
 
 .worldBtn:hover {
   background: rgba(199, 239, 255, 0.699);
+}
+
+.DeathsBtn,
+.ConfirmedBtn,
+.CriticalBtn,
+.RecoveredBtn {
+  width: 15rem;
 }
 
 .DeathsBtn {
@@ -136,7 +151,7 @@ body {
 }
 
 .displayNone {
-  display: none;
+  display: none !important;
 }
 
 .visibilityHidden {
@@ -155,7 +170,8 @@ body {
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-name: circle-clear;
-  border-left: rgb(1, 245, 253) 0.4rem solid;
+  border: rgb(196, 196, 196) 0.5rem solid;
+  border-left: rgb(0, 202, 209) 0.5rem solid;
   height: 5rem;
   width: 5rem;
   border-radius: 50%;

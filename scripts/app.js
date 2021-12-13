@@ -1,6 +1,6 @@
 import { addSelectionCountry, infoContainerTotal } from "./continent.js";
-import { countryContainer, select } from "./country.js";
-import { myChart, buildChart } from "./graph.js";
+import { selectingCountry } from "./country.js";
+import { myChart, preparingForChart } from "./graph.js";
 
 export let flagLoad = false;
 const worldBtn = document.querySelector('[data-id="worldBtn"]');
@@ -13,7 +13,7 @@ export const ConfirmedTotal = document.querySelector('[data-id="Confirmed"]');
 export const CriticalTotal = document.querySelector('[data-id="Critical"]');
 export const RecoveredTotal = document.querySelector('[data-id="Recovered"]');
 
-export const continentMap = new Map(); // save the code contry as a key & the continent as the value.
+const continentMap = new Map(); // save the code contry as a key & the continent as the value.
 
 // save the total deaths, confirmed, recovered & critical casses for each continent.
 export const continentObj = {
@@ -27,14 +27,7 @@ export const continentObj = {
   totalConfirmed: 0,
   totalCritical: 0,
   totalRecovered: 0,
-  // asiaCountry: {},
-  // africaCountry: {},
-  // americasCountry: {},
-  // europeCountry: {},
-  // australiaCountry: {},
 };
-
-// console.log(continentObj);
 
 export const chosenObj = {
   idx: {
@@ -93,7 +86,7 @@ async function getFetch() {
   calcWorldData(results[5].data.data);
   flagLoad = true;
 }
-getFetch();
+
 
 // adding the code contry as a key & the continent as the value for every contry.
 function addToHash(resultsArray, contientName) {
@@ -124,48 +117,13 @@ function calcWorldData(WorldDataArray) {
       continentObj[`${continentName}`][3] +=
         WorldDataArray[i].latest_data.recovered;
       continentObj.totalRecovered += WorldDataArray[i].latest_data.recovered;
-
-      // continentObj[`${continentName}Country`][`${WorldDataArray[i].name}`] = {
-      //   deaths: WorldDataArray[i].latest_data.deaths, confirmed: WorldDataArray[i].latest_data.confirmed, critical: WorldDataArray[i].latest_data.critical, recovered: WorldDataArray[i].latest_data.recovered,
-      // };
     }
   }
   preparingForChart();
   addToTotal();
 }
 
-export const dataContainerCanvasTitle = document.querySelector(
-  ".dataContainer__canvas--title"
-);
-
-// preparing the data for chart.
-export function preparingForChart() {
-  let dataArr = [];
-  let labelsArr = [];
-  const idxData = chosenObj.idx[`${chosenObj.chosenData}`];
-  const chartType = chosenObj.typeOfChart[`${chosenObj.chosenBtn}`];
-
-  if (chosenObj.chosenBtn === "World") {
-    dataArr = [
-      continentObj.asia[idxData],
-      continentObj.africa[idxData],
-      continentObj.americas[idxData],
-      continentObj.europe[idxData],
-      continentObj.australia[idxData],
-    ];
-
-    labelsArr = ["Asia", "Africa", "America", "Europe", "Australia"];
-
-    dataContainerCanvasTitle.innerText = "Global Data of Covid-19";
-  } else {
-    dataArr = continentObj[chosenObj.chosenBtn.toLowerCase()];
-    labelsArr = ["Deaths", "Confirmed", "Critical", "Recovered"];
-    dataContainerCanvasTitle.innerText = `${chosenObj.chosenBtn} Data of Covid-19`;
-  }
-
-  buildChart(dataArr, chosenObj.chosenBtn, labelsArr, chartType);
-}
-
+// add the total numbers to the info btns.
 function addToTotal() {
   DeathsTotal.innerText = `${continentObj.totalDeaths}`;
   ConfirmedTotal.innerText = `${continentObj.totalConfirmed}`;
@@ -178,12 +136,9 @@ worldBtn.addEventListener("click", (e) => {
   chosenObj.chosenBtn = "World";
   chosenObj.chosenData = "Recovered Cases";
   preparingForChart();
-  select.classList.add("visibilityHidden");
-  countryContainer.classList.add("displayNone");
-  infoContainerTotal.classList.remove("displayNone");
+  selectingCountry.classList.add("displayNone");
   btnContainerChart.classList.remove("displayNone");
-  countryContainer.classList.add("displayNone");
-  countryContainer.classList.remove("visibilityHidden");
+  infoContainerTotal.classList.remove("visibilityHidden");
   addToTotal();
 });
 
@@ -192,3 +147,5 @@ btnContainerChart.addEventListener("click", (e) => {
   chosenObj.chosenData = `${e.target.innerText}`;
   preparingForChart();
 });
+
+getFetch();

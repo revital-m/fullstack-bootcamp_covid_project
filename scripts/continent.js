@@ -1,14 +1,6 @@
-import { countryContainer, select } from "./country.js";
-import {
-  btnContainerChart,
-  chosenObj,
-  continentMap,
-  continentObj,
-  flagLoad,
-  preparingForChart,
-} from "./app.js";
-import { buildChart, myChart } from "./graph.js";
-// import { buildBarChart, myChart } from "./graph.js";
+import { selectingCountry } from "./country.js";
+import { btnContainerChart, chosenObj, flagLoad } from "./app.js";
+import { myChart, preparingForChart } from "./graph.js";
 
 const dataContainerBtn = document.querySelector(".btnContainer__continent");
 const dataContainerSelect = document.querySelector(".dataContainer__select");
@@ -16,28 +8,15 @@ export const infoContainerTotal = document.querySelector(
   ".infoContainer__total"
 );
 
-// export const chartData = {
-//   asia: {labelsArr: [], deathsDataArr: [], confirmedDataArr: [], criticalDataArr: [], recoveredDataArr: [],},
-//   africa: {labelsArr: [], deathsDataArr: [], confirmedDataArr: [], criticalDataArr: [], recoveredDataArr: [],},
-//   americas: {labelsArr: [], deathsDataArr: [], confirmedDataArr: [], criticalDataArr: [], recoveredDataArr: [],},
-//   europe: {labelsArr: [], deathsDataArr: [], confirmedDataArr: [], criticalDataArr: [], recoveredDataArr: [],},
-//   australia: {labelsArr: [], deathsDataArr: [], confirmedDataArr: [], criticalDataArr: [], recoveredDataArr: [],},
-// }
-
 dataContainerBtn.addEventListener("click", (e) => {
   if (flagLoad && e.target.innerText.length <= 10) {
     chosenObj.chosenBtn = `${e.target.innerText}`;
-    console.log(chosenObj.chosenBtn);
-    // getContinentData(e.target.innerText);
     myChart.destroy();
     preparingForChart();
     displayNone(e.target.innerText.toLowerCase());
-    select.classList.remove("visibilityHidden");
-    countryContainer.classList.add("displayNone");
+    selectingCountry.classList.remove("displayNone");
     btnContainerChart.classList.add("displayNone");
-    infoContainerTotal.classList.add("displayNone");
-    countryContainer.classList.remove("displayNone");
-    countryContainer.classList.add("visibilityHidden");
+    infoContainerTotal.classList.add("visibilityHidden");
   }
 });
 
